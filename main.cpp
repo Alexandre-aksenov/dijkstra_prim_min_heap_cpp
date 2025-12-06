@@ -1038,8 +1038,7 @@ return 0;
 
 
 //Main 2: Create a very small graph , load it into a VertexLabeledGraph, check correctness.
-/*
-int main()
+void test_VertexLabeledGraph()
 {//Create graph 0-(1)-1-(2)-2
     Graph Gtest(3);
 
@@ -1108,9 +1107,8 @@ int main()
     cout << "The queue is now: "; 
     GTestLabeled.printQindexes();
     
-return 0;
+// return 0;
 }
-*/
 
 
 // Test: Dijkstra algorithm.
@@ -1213,6 +1211,7 @@ void test_Prim()
 
 int main()
 {
+    test_VertexLabeledGraph();
     test_D();
     test_Prim_small();
     test_Prim();
