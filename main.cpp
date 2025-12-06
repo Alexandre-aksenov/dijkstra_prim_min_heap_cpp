@@ -992,63 +992,54 @@ private:
 };
 
 
-// Five possible "main" functions. Each one is a testing procedure.
-// The reviewer may, if they wish so, try any of them. To do so, it is enough to uncomment the corresponding procedure and to comment out the one, which is active currently.
+// Five tests.
+//Test: create a very small graph (0-(1)-1-(2)-2), then destroy
+void test_create_graph()
+{
+    cout << "-- Test a simple graph. --" << endl;
 
-//The procedure Main 5 replies to the instructions of the Assignment. 
-
-
-//Main 1: create a very small graph, then destroy
-
-/*
-int main()
-{//Create graph 0-(1)-1-(2)-2
-Graph Gtest(3);
-
-Gtest.addEdge(0,1);
-Gtest.addEdge(1,2,2.0);
-
-cout << "Is I2 symmetric? " << Gtest.is_symmetric() << endl;
-//cout << "Is I2 symmetric? " << endl;
-
-//Print neighbors of vertex 2
-vector<unsigned int> neighbors1=Gtest.neighbors(1);
-cout<< "The neighbors of 1 are: ";
-
-for(unsigned int i=0; i<neighbors1.size(); ++i)
-  cout << neighbors1[i] << ' ';
-
-
-cout << endl;
-
-//Print "lengths" of all 3 edges
-cout << "The 'Lengths' of edges of I2 are: 0-(" << Gtest.get_edge_value(0,1) << ")-1-(" << Gtest.get_edge_value(1,2) << ")-2-(" << Gtest.get_edge_value(2,0) << ")\n";
-
-//Expand to K3
-Gtest.addEdge(0,2,3.0);
-cout << "Is K3 symmetric? " << Gtest.is_symmetric() << endl;
-
-//Destroy
-//~Gtest();  
-//delete Gtest; //  argument de type « class Graph » donné à « delete » alors qu'on attendait un pointeur
-
-return 0;
-}
-*/
-
-
-//Main 2: Create a very small graph , load it into a VertexLabeledGraph, check correctness.
-void test_VertexLabeledGraph()
-{//Create graph 0-(1)-1-(2)-2
+    //Create graph 
     Graph Gtest(3);
 
     Gtest.addEdge(0,1);
     Gtest.addEdge(1,2,2.0);
 
     cout << "Is I2 symmetric? " << Gtest.is_symmetric() << endl;
-//cout << "Is I2 symmetric? " << endl;
 
-//Print neighbors of vertex 2
+    //Print neighbors of vertex 2
+    vector<unsigned int> neighbors1=Gtest.neighbors(1);
+    cout<< "The neighbors of 1 are: ";
+
+    for(unsigned int i=0; i<neighbors1.size(); ++i)
+        cout << neighbors1[i] << ' ';
+
+    cout << endl;
+
+    //Print "lengths" of all 3 edges
+    cout << "The 'Lengths' of edges of I2 are: 0-(" << Gtest.get_edge_value(0,1) << ")-1-(" << Gtest.get_edge_value(1,2) << ")-2-(" << Gtest.get_edge_value(2,0) << ")\n";
+
+    //Expand to K3
+    Gtest.addEdge(0,2,3.0);
+    cout << "Is K3 symmetric? " << Gtest.is_symmetric() << endl;
+    cout << endl;
+}
+
+
+// Test: Create a very small graph ( 0-(1)-1-(2)-2 ), load it into a VertexLabeledGraph, check correctness.
+void test_VertexLabeledGraph()
+{ 
+    cout << "-- Test a vertex-labeled graph. --" << endl;
+
+    //Create graph
+    Graph Gtest(3);
+
+    Gtest.addEdge(0,1);
+    Gtest.addEdge(1,2,2.0);
+
+    cout << "Is I2 symmetric? " << Gtest.is_symmetric() << endl;
+
+
+    //Print neighbors of vertex 2
     vector<unsigned int> neighbors1=Gtest.neighbors(1);
     cout<< "The neighbors of 1 are: ";
 
@@ -1058,15 +1049,15 @@ void test_VertexLabeledGraph()
 
     cout << endl;
 
-//Print "lengths" of all 3 edges
+    //Print "lengths" of all 3 edges
     cout << "The 'Lengths' of edges of I2 are: 0-(" << Gtest.get_edge_value(0,1) << ")-1-(" << Gtest.get_edge_value(1,2) << ")-2-(" << Gtest.get_edge_value(2,0) << ")\n";
 
-//Expand to K3
+    //Expand to K3
     Gtest.addEdge(0,2,3.0);
     cout << "Is K3 symmetric? " << Gtest.is_symmetric() << endl;
 
-//Expand to VertexLabeledGraph
-    VertexLabeledGraph GTestLabeled(Gtest); //This seems to have called a graph destructor.
+    //Expand to VertexLabeledGraph
+    VertexLabeledGraph GTestLabeled(Gtest);
     cout << "Is labeled K3 valid? " << GTestLabeled.is_valid() << endl;
     
     cout << "It has " << GTestLabeled.V() << " vertices," << endl;
@@ -1087,8 +1078,6 @@ void test_VertexLabeledGraph()
     cout << "Vertex 0 has been added to the open set.\n";
     cout << "The queue is now: ";
     GTestLabeled.printQindexes();
-    //PrintVector(GTestLabeled.Q.ArrayIndices()); 
-    //cout << "\n";
     
     heapElem<unsigned int> zeroLabeled = GTestLabeled.set_status_pop_open();
     cout << "Vertex 0 has been removed from the open set.\n";
@@ -1106,8 +1095,6 @@ void test_VertexLabeledGraph()
     cout << "Vertex 2 has its label decreased.\n";
     cout << "The queue is now: "; 
     GTestLabeled.printQindexes();
-    
-// return 0;
 }
 
 
@@ -1139,11 +1126,12 @@ void test_D()
     StartVtx = 4;
     EndVtx =0;
     
-    cout << "-- Test Dijkstra: finding a path from vertex " << StartVtx << " to vertex " << EndVtx << endl; //To make analogous change in Main 6,7 .
+    cout << "-- Test Dijkstra's algorith: finding a path from vertex " << StartVtx << " to vertex " << EndVtx << endl; //To make analogous change in Main 6,7 .
     list<unsigned int> Path1=GTestLabeled.path(StartVtx,EndVtx,1);
     
     PrintList(Path1);
-    
+
+    cout << endl;
 }
 
 
@@ -1173,7 +1161,7 @@ void test_Prim_small()
 
     unsigned int StartVtx = 4;
     
-    cout << "-- Testing Prim's algorithm on small graph from the vertex " << StartVtx << " --" << endl;
+    cout << "-- Test Prim's algorithm on small graph from the vertex " << StartVtx << " --" << endl;
     vector<pair<unsigned int, unsigned int>> Tree4=GTestLabeled.PrimMST(StartVtx,1);
     unsigned int CostTree= Tree4[Tree4.size()-1].second ;
 
@@ -1181,8 +1169,8 @@ void test_Prim_small()
     PrintPairVector(Tree4);
     cout << "Cost: " << CostTree << endl;
     
+    cout << endl;
 }
-
 
 
 // Test 5: Execute Prim on the graph "SampleTestData".
@@ -1211,6 +1199,7 @@ void test_Prim()
 
 int main()
 {
+    test_create_graph();
     test_VertexLabeledGraph();
     test_D();
     test_Prim_small();
