@@ -1,13 +1,7 @@
-//Assignment for week 4 of the course "C++ for C programmers". Prim's algorithm. The classes of the assignment of Week 3 have been used and modified. 
-
 //Three nontrivial classes are defined and their methods are provided.
 //Graph: a symmetric graph with labeled edges (labels: unsigned int). Supports initialization from file or by copy from another instance of Graph.
 //Priority Queue: the min-heap structure. Supports addition of a new element with given priority, extraction of minimal priority, decreasing priority of an element. The set of priorities is a template type.
 //VertexLabeledGraph: a Graph together with vertex labels and a Priority Queue, containing a subset of vertices. The mehods of this class keep the labels and the Queue consistent. Supports initialisation from a Graph, Dijkstra's and Prim's algorithms.
-
-//An attempt has been made in creating a "universal" Priority Queue class, supporting both Integer and Double types (adapted to both assignments of Week 3 and Week 4), and in creating two different types for Graphs (Dijkstra's and Prim's algorithms do not have access to modifying the edges of the graph). 
-
-// The extension towards MST with different colors has not not being adressed for the moment. The author begs for reviewer's understanding regarding this point.
 
 
 #include <iostream>
@@ -626,7 +620,6 @@ void PrintPairVector(vector<pair<unsigned int, unsigned int>>  PVect){
 //should satisfy Q.Arr[VertexLocations[x]].label == Labels[x].label wherever the vertex has status 1.
 
 //Printing a list,
-//see https://stackoverflow.com/questions/16229729/printing-out-contents-of-a-list-from-the-c-list-library
 void PrintList(list<unsigned int> lst)
 {for (list<unsigned int>::iterator i = lst.begin(); i != lst.end(); ++i)
     cout << *i << " ";
