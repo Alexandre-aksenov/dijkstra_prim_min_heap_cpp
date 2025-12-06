@@ -1194,9 +1194,9 @@ int main()
 */
 
 
-// Main 5: Execute Prim on the graph "SampleTestData".
+// Test 5: Execute Prim on the graph "SampleTestData".
 // Print out a Minimum Spanning Tree and its cost (equal 30).
-int main()
+void test_Prim()
 {
     ifstream infile("SampleTestData.txt");
     //istream_iterator<string> start(infile);
@@ -1209,7 +1209,7 @@ int main()
     VertexLabeledGraph GfileLabeled(Gfile);
 
     unsigned int StartVtx = 1;
-    cout << "Executing Prim's algorithm from the vertex " << StartVtx << endl;
+    cout << "-- Testing Prim's algorithm from the vertex " << StartVtx << " --" << endl;
 
     vector<pair<unsigned int, unsigned int>> Tree0=GfileLabeled.PrimMST(StartVtx,1);
     //The 2nd argument of "PrimMST" controls the printout of the intermediate steps.
@@ -1219,3 +1219,9 @@ int main()
     cout << "Cost: " << Tree0[Tree0.size()-1].second << endl;
 }
 
+
+int main()
+{
+    test_Prim();
+    return 0;
+}
