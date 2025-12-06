@@ -1153,9 +1153,8 @@ int main()
 */
 
 
-//Main 4: Execute Prim on a small graph.
-/*
-int main()
+//Test: Execute Prim on a small graph.
+void test_Prim_small()
 {
     //Create graph
     Graph Gtest(9);
@@ -1177,12 +1176,9 @@ int main()
 
     VertexLabeledGraph GTestLabeled(Gtest);
 
-    //vector<pair<unsigned int, unsigned int>> Tree0=GTestLabeled.PrimMST(0,1);
-    //PrintPairVector(Tree0);
-    
     unsigned int StartVtx = 4;
     
-    cout << "Executing Prim's algorithm from the vertex " << StartVtx << endl;
+    cout << "-- Testing Prim's algorithm on small graph from the vertex " << StartVtx << " --" << endl;
     vector<pair<unsigned int, unsigned int>> Tree4=GTestLabeled.PrimMST(StartVtx,1);
     unsigned int CostTree= Tree4[Tree4.size()-1].second ;
 
@@ -1191,7 +1187,7 @@ int main()
     cout << "Cost: " << CostTree << endl;
     
 }
-*/
+
 
 
 // Test 5: Execute Prim on the graph "SampleTestData".
@@ -1199,8 +1195,6 @@ int main()
 void test_Prim()
 {
     ifstream infile("SampleTestData.txt");
-    //istream_iterator<string> start(infile);
-    //istream_iterator<string> end;
     istream_iterator<unsigned int> start(infile);
     istream_iterator<unsigned int> end;
     
@@ -1222,6 +1216,7 @@ void test_Prim()
 
 int main()
 {
+    test_Prim_small();
     test_Prim();
     return 0;
 }
