@@ -956,9 +956,7 @@ public:
         }
         
         return true;
-        
     }
-    
     
 private:
     const unsigned int size;
@@ -1115,9 +1113,8 @@ return 0;
 */
 
 
-//Main 3: Test Dijkstra algorithm.
-/*
-int main()
+// Test: Dijkstra algorithm.
+void test_D()
 {
     //Create graph
     Graph Gtest(9);
@@ -1144,13 +1141,13 @@ int main()
     StartVtx = 4;
     EndVtx =0;
     
-    cout << "Finding a path from vertex " << StartVtx << " to vertex " << EndVtx << endl; //To make analogous change in Main 6,7 .
+    cout << "-- Test Dijkstra: finding a path from vertex " << StartVtx << " to vertex " << EndVtx << endl; //To make analogous change in Main 6,7 .
     list<unsigned int> Path1=GTestLabeled.path(StartVtx,EndVtx,1);
     
     PrintList(Path1);
     
 }
-*/
+
 
 
 //Test: Execute Prim on a small graph.
@@ -1216,6 +1213,7 @@ void test_Prim()
 
 int main()
 {
+    test_D();
     test_Prim_small();
     test_Prim();
     return 0;
